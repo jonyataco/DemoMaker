@@ -20,6 +20,7 @@
 		AB1EE315271CAAB40075EAA2 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1EE314271CAAB40075EAA2 /* DemoViewController.swift */; };
 		AB5E8AB52726502000BC73ED /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5E8AB42726502000BC73ED /* ControlsViewController.swift */; };
 		AB5E8AB72726577100BC73ED /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5E8AB62726577100BC73ED /* UIView+Ext.swift */; };
+		C3128086272BB4290008E6FB /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3128085272BB4290008E6FB /* ScrollableStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		AB1EE314271CAAB40075EAA2 /* DemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		AB5E8AB42726502000BC73ED /* ControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewController.swift; sourceTree = "<group>"; };
 		AB5E8AB62726577100BC73ED /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		C3128085272BB4290008E6FB /* ScrollableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				C3128084272B35F60008E6FB /* Extensions */,
 				AB1EE314271CAAB40075EAA2 /* DemoViewController.swift */,
+				C3128085272BB4290008E6FB /* ScrollableStackView.swift */,
 				AB5E8AB42726502000BC73ED /* ControlsViewController.swift */,
 				AB1EE2E1271C91E90075EAA2 /* AppDelegate.swift */,
 				AB1EE2E3271C91E90075EAA2 /* SceneDelegate.swift */,
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3128086272BB4290008E6FB /* ScrollableStackView.swift in Sources */,
 				AB1EE2E6271C91E90075EAA2 /* ViewController.swift in Sources */,
 				AB1EE2E2271C91E90075EAA2 /* AppDelegate.swift in Sources */,
 				AB5E8AB52726502000BC73ED /* ControlsViewController.swift in Sources */,
