@@ -8,19 +8,7 @@
 import UIKit
 
 class ControlsViewController: UIViewController, UIScrollViewDelegate {
-
-    let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        return scrollView
-    }()
-
-    let buttonStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-        return stack
-    }()
+    let controlsStack = ScrollableStackView(axis: .horizontal)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,28 +18,32 @@ class ControlsViewController: UIViewController, UIScrollViewDelegate {
     
     func configure() {
         view.backgroundColor = .systemBackground
-        view.addSubview(buttonStack)
+        setupStack()
         addButtonsToStack()
-        setupConstraints()
     }
     
-    func addButtonsToStack() {
-        for i in 0..<5 {
-            let button = UIButton()
-            button.setTitle("Button \(i)", for: .normal)
-            button.setTitleColor(.systemBlue, for: .normal)
-            buttonStack.addArrangedSubview(button)
-            print("AddedButton")
+    private func addButtonsToStack() {
+        for _ in 0..<20 {
+            let image = UIImage(systemName: "pencil")
+            let imageView = UIImageView(image: image)
+            imageView.contentMode = .scaleAspectFit
+            controlsStack.stackView.addArrangedSubview(imageView)
         }
     }
     
-    func setupConstraints() {
-        buttonStack.translatesAutoresizingMaskIntoConstraints = false
+    func setupStack() {
+        view.addSubview(controlsStack)
+        controlsStack.stackView.distribution = .fillEqually
+        controlsStack.stackView.spacing = 40
+        // Makes it so that the stack view is horizontally scrollable
+        controlsStack.backgroundColor = .gray
+    
+        
         NSLayoutConstraint.activate([
-            buttonStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            buttonStack.widthAnchor.constraint(equalTo: view.widthAnchor),
-            buttonStack.heightAnchor.constraint(equalToConstant: 100)
+            controlsStack.widthAnchor.constraint(equalTo: view.widthAnchor),
+            controlsStack.heightAnchor.constraint(equalToConstant: 100),
+            controlsStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            controlsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
 }
