@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import PhotosUI
 import UniformTypeIdentifiers
 
 class DemoViewController: UIViewController {
+    
+    let controlsStack = ScrollableStackView(axis: .horizontal)
 
-    let pickPhotoButton = UIButton(type: .system)
+    let pickPhotoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        return button
+    }()
     
     let demoConatinerView: UIView = {
         let view = UIView()
@@ -18,12 +25,16 @@ class DemoViewController: UIViewController {
         return view
     }()
     
-    var imageView: UIImageView? = nil
+    let imageView = DemoImageView()
     
     override func viewDidLoad() {
         configureAppearance()
-        configureButtons()
         configureUI()
+        configureButtons()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        imageView.center = demoConatinerView.convert(demoConatinerView.center, from: demoConatinerView.superview)
     }
     
     func configureAppearance() {
@@ -33,29 +44,20 @@ class DemoViewController: UIViewController {
     }
     
     func configureButtons() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Audio", image: nil, primaryAction: UIAction { [weak self] _ in
-            guard let self = self else {
-                return
-            }
-            
-            let types: [UTType] = [.mp3, .wav, .aiff]
-            let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: types)
-            documentPicker.delegate = self
-            documentPicker.allowsMultipleSelection = false
-            self.present(documentPicker, animated: true)
-        })
-        
         let containerViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(containerViewTapped))
         demoConatinerView.isUserInteractionEnabled = true
         demoConatinerView.addGestureRecognizer(containerViewTapGesture)
     
-        pickPhotoButton.setTitle("Choose an image", for: .normal)
         pickPhotoButton.addTarget(self, action: #selector(pickPhotoButtonPressed), for: .touchUpInside)
+        controlsStack.stackView.addArrangedSubview(pickPhotoButton)
     }
     
     func configureUI() {
-        // view.addSubview(pickPhotoButton)
+        view.addSubview(controlsStack)
         view.addSubview(demoConatinerView)
+        view.addSubview(pickPhotoButton)
+        demoConatinerView.addSubview(imageView)
+        controlsStack.translatesAutoresizingMaskIntoConstraints = false
         pickPhotoButton.translatesAutoresizingMaskIntoConstraints = false
         demoConatinerView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -63,13 +65,21 @@ class DemoViewController: UIViewController {
             demoConatinerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             demoConatinerView.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             demoConatinerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-            demoConatinerView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            demoConatinerView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            controlsStack.topAnchor.constraint(equalTo: demoConatinerView.bottomAnchor),
+            controlsStack.widthAnchor.constraint(equalTo: view.widthAnchor),
+            controlsStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            controlsStack.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
     
     @objc func pickPhotoButtonPressed() {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        let picker = PHPickerViewController(configuration: config)
         picker.delegate = self
         present(picker, animated: true)
     }
@@ -82,37 +92,23 @@ class DemoViewController: UIViewController {
     }
 }
 
-// UIImagePickerControllerDelegate implementation
-extension DemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    
-        if let image = info[.editedImage] as? UIImage {
-            print("Got the edited image")
-            imageView?.image = image
-        }
+extension DemoViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        // Dismiss the image picker after the user has finished selecting results
+        dismiss(animated: true)
         
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-
-}
-
-// UIDocumentPickerDelegate Implementation
-extension DemoViewController: UIDocumentPickerDelegate {
-    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
-        print("The document picker was cancelled")
-    }
-    
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-        guard let _ = urls.first else {
-            print("Unable to access the picked document")
-            return
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                DispatchQueue.main.async {
+                    guard let self = self, let image = image as? UIImage else {
+                        return
+                    }
+                    
+                    self.imageView.image = image
+                    self.imageView.resizeImage(inside: self.demoConatinerView)
+                }
+            }
         }
-    
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 }
 

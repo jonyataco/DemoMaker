@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB1EE2E2271C91E90075EAA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1EE2E1271C91E90075EAA2 /* AppDelegate.swift */; };
 		AB1EE2E4271C91E90075EAA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1EE2E3271C91E90075EAA2 /* SceneDelegate.swift */; };
-		AB1EE2E6271C91E90075EAA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1EE2E5271C91E90075EAA2 /* ViewController.swift */; };
+		AB1EE2E6271C91E90075EAA2 /* UserDemosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB1EE2E5271C91E90075EAA2 /* UserDemosViewController.swift */; };
 		AB1EE2E9271C91E90075EAA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB1EE2E7271C91E90075EAA2 /* Main.storyboard */; };
 		AB1EE2EC271C91E90075EAA2 /* DemoMaker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB1EE2EA271C91E90075EAA2 /* DemoMaker.xcdatamodeld */; };
 		AB1EE2EE271C91EA0075EAA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB1EE2ED271C91EA0075EAA2 /* Assets.xcassets */; };
@@ -21,6 +21,8 @@
 		AB5E8AB52726502000BC73ED /* ControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5E8AB42726502000BC73ED /* ControlsViewController.swift */; };
 		AB5E8AB72726577100BC73ED /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5E8AB62726577100BC73ED /* UIView+Ext.swift */; };
 		C3128086272BB4290008E6FB /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3128085272BB4290008E6FB /* ScrollableStackView.swift */; };
+		C393FDD22738AFA6000812CD /* Draggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C393FDD12738AFA6000812CD /* Draggable.swift */; };
+		C393FDD42738B056000812CD /* DemoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C393FDD32738B056000812CD /* DemoImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +46,7 @@
 		AB1EE2DE271C91E90075EAA2 /* DemoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1EE2E1271C91E90075EAA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB1EE2E3271C91E90075EAA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB1EE2E5271C91E90075EAA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB1EE2E5271C91E90075EAA2 /* UserDemosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDemosViewController.swift; sourceTree = "<group>"; };
 		AB1EE2E8271C91E90075EAA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB1EE2EB271C91E90075EAA2 /* DemoMaker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DemoMaker.xcdatamodel; sourceTree = "<group>"; };
 		AB1EE2ED271C91EA0075EAA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,6 +61,8 @@
 		AB5E8AB42726502000BC73ED /* ControlsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsViewController.swift; sourceTree = "<group>"; };
 		AB5E8AB62726577100BC73ED /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		C3128085272BB4290008E6FB /* ScrollableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
+		C393FDD12738AFA6000812CD /* Draggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draggable.swift; sourceTree = "<group>"; };
+		C393FDD32738B056000812CD /* DemoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,15 +113,12 @@
 		AB1EE2E0271C91E90075EAA2 /* DemoMaker */ = {
 			isa = PBXGroup;
 			children = (
+				C305753D2735CBD100B9E2D5 /* CustomViews */,
 				C3128084272B35F60008E6FB /* Extensions */,
-				AB1EE314271CAAB40075EAA2 /* DemoViewController.swift */,
-				C3128085272BB4290008E6FB /* ScrollableStackView.swift */,
-				AB5E8AB42726502000BC73ED /* ControlsViewController.swift */,
 				AB1EE2E1271C91E90075EAA2 /* AppDelegate.swift */,
 				AB1EE2E3271C91E90075EAA2 /* SceneDelegate.swift */,
-				AB1EE2E5271C91E90075EAA2 /* ViewController.swift */,
-				AB1EE2E7271C91E90075EAA2 /* Main.storyboard */,
 				AB1EE2ED271C91EA0075EAA2 /* Assets.xcassets */,
+				AB1EE2E7271C91E90075EAA2 /* Main.storyboard */,
 				AB1EE2EF271C91EA0075EAA2 /* LaunchScreen.storyboard */,
 				AB1EE2F2271C91EA0075EAA2 /* Info.plist */,
 				AB1EE2EA271C91E90075EAA2 /* DemoMaker.xcdatamodeld */,
@@ -142,12 +143,49 @@
 			path = DemoMakerUITests;
 			sourceTree = "<group>";
 		};
+		C305753D2735CBD100B9E2D5 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				C393FDD02738AF7E000812CD /* Protocols */,
+				C305753F2735CBEF00B9E2D5 /* Views */,
+				C305753E2735CBD700B9E2D5 /* ViewControllers */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		C305753E2735CBD700B9E2D5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB1EE2E5271C91E90075EAA2 /* UserDemosViewController.swift */,
+				AB5E8AB42726502000BC73ED /* ControlsViewController.swift */,
+				AB1EE314271CAAB40075EAA2 /* DemoViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C305753F2735CBEF00B9E2D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C3128085272BB4290008E6FB /* ScrollableStackView.swift */,
+				C393FDD32738B056000812CD /* DemoImageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C3128084272B35F60008E6FB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				AB5E8AB62726577100BC73ED /* UIView+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C393FDD02738AF7E000812CD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C393FDD12738AFA6000812CD /* Draggable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,14 +319,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C393FDD22738AFA6000812CD /* Draggable.swift in Sources */,
 				C3128086272BB4290008E6FB /* ScrollableStackView.swift in Sources */,
-				AB1EE2E6271C91E90075EAA2 /* ViewController.swift in Sources */,
+				AB1EE2E6271C91E90075EAA2 /* UserDemosViewController.swift in Sources */,
 				AB1EE2E2271C91E90075EAA2 /* AppDelegate.swift in Sources */,
 				AB5E8AB52726502000BC73ED /* ControlsViewController.swift in Sources */,
 				AB1EE2E4271C91E90075EAA2 /* SceneDelegate.swift in Sources */,
 				AB5E8AB72726577100BC73ED /* UIView+Ext.swift in Sources */,
 				AB1EE2EC271C91E90075EAA2 /* DemoMaker.xcdatamodeld in Sources */,
 				AB1EE315271CAAB40075EAA2 /* DemoViewController.swift in Sources */,
+				C393FDD42738B056000812CD /* DemoImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
