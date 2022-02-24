@@ -36,9 +36,7 @@ class ControlsViewController: UIViewController, UIScrollViewDelegate {
         controlsStack.stackView.distribution = .fillEqually
         controlsStack.stackView.spacing = 40
         // Makes it so that the stack view is horizontally scrollable
-        controlsStack.backgroundColor = .gray
     
-        
         NSLayoutConstraint.activate([
             controlsStack.widthAnchor.constraint(equalTo: view.widthAnchor),
             controlsStack.heightAnchor.constraint(equalToConstant: 100),

@@ -30,7 +30,7 @@ class UserDemosViewController: UIViewController {
     }
     
     @objc func addDemo() {
-        navigationController?.pushViewController(ControlsViewController(), animated: true)
+        navigationController?.pushViewController(DemoViewController(), animated: true)
     }
 }
 

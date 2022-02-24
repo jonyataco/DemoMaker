@@ -23,7 +23,6 @@ class ScrollableStackView: UIView {
     }
     
     private func configure() {
-        translatesAutoresizingMaskIntoConstraints = false
         addSubview(scrollView)
         scrollView.addSubview(stackView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
